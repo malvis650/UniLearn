@@ -14,6 +14,8 @@ import Profile from "../screens/profile";
 import Search from "../screens/search";
 import Settings from "../screens/settings";
 
+// Define the type for the tabs
+
 type Tabs = "home" | "search" | "profile" | "settings" | "addPost";
 
 const Index = () => {

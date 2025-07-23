@@ -2,14 +2,16 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router'; // Using Expo Router for navigation
 import React from 'react';
 import {
-    Image,
-    SafeAreaView,
-    StatusBar,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  Image,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableNativeFeedback,
+  TouchableOpacity,
+  View,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const RoleSelectionScreen = () => {
   const router = useRouter();
@@ -20,16 +22,20 @@ const RoleSelectionScreen = () => {
     
     // Navigate to the appropriate dashboard
     if (role === 'student') {
-      router.push('./Dashboard'); // Assuming this is the student dashboard
-    } else {
-      router.push('./Dashboard'); // Assuming this is the teacher dashboard
+      router.push('./(Authentication)/SignIn'); // Assuming this is the student dashboard
+    } else if (role === 'teacher') {
+      router.push('./(Lecturers auth)/lecturerSignIn'); // Assuming this is the teacher dashboard
     }
   };
 
   return (
     <SafeAreaView style={styles.container}>
+      {/* Status Bar */}
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
-      
+      <ScrollView 
+        contentContainerStyle={{ flexGrow: 1 }}
+        keyboardShouldPersistTaps="handled"
+        showsVerticalScrollIndicator={false}>
       {/* Header */}
       <View style={styles.header}>
         <Image 
@@ -73,8 +79,17 @@ const RoleSelectionScreen = () => {
 
       {/* Footer Note */}
       <Text style={styles.footerNote}>
-        You can change your role later in account settings
+        You cannot switch roles once selected, Please choose carefully.
+        {'\n'}If you are a student, you can only access the student dashboard, and if you are a teacher, you can only access the teacher dashboard.
+        {'\n'}For any issues, <TouchableNativeFeedback onPress={() => {router.push('./screens/contactUs');}}><Text style={styles.contactSupport}>Contact Support</Text></TouchableNativeFeedback>
       </Text>
+      {/* Footer */}
+      <View style={styles.footer}>
+        <Text style={styles.footerText}>
+          © 2025 UniLearn. All rights reserved.
+        </Text>
+      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -158,6 +173,21 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 40,
     paddingHorizontal: 40,
+  },
+  footer: {
+    padding: 20,
+    backgroundColor: '#f8f9fa',
+    borderTopWidth: 1,
+    borderColor: '#eee',
+    alignItems: 'center',
+  },
+  footerText: {
+    fontSize: 12,
+    color: '#888',
+  },
+  contactSupport: {
+    color: '#3498db',
+    fontWeight: '600',
   },
 });
 

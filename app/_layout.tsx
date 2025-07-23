@@ -22,7 +22,7 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="Onboarding" options={{ headerShown: false }} />
         <Stack.Screen name="checking" options={{ headerShown: false }} />
-        <Stack.Screen name="(Lecturer's auth)" options={{ headerShown: false }} />
+        <Stack.Screen name="(Lecturers auth)" options={{ headerShown: false }} />
         <Stack.Screen name="(Authentication)" options={{ headerShown: false }} />
         <Stack.Screen name="Dashboard" options={{ headerShown: false }} />
       </Stack>

@@ -1,15 +1,15 @@
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import {
-    ActivityIndicator,
-    Dimensions,
-    Image,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View
+  ActivityIndicator,
+  Dimensions,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -96,6 +96,23 @@ const Login = () => {
           />
         </View>
 
+        {/* ID checking */}
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Lecturer ID</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your ID"
+            placeholderTextColor="#95a5a6"
+            autoCapitalize="none"
+            value={ID}
+            onChangeText={setID}
+          />
+          <Image
+            source={require('@/assets/images/icons8-eye-50.png')}
+            style={styles.inputIcon}
+          />
+        </View>
+
         {/* Password Input */}
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Password</Text>
@@ -131,22 +148,7 @@ const Login = () => {
           <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
         </TouchableOpacity>
 
-              {/* ID checking */}
-        <View style={styles.inputContainer}>
-          <Text style={styles.label}>Lecturer ID</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Enter your ID"
-            placeholderTextColor="#95a5a6"
-            autoCapitalize="none"
-            value={ID}
-            onChangeText={setID}
-          />
-          <Image
-            source={require('@/assets/images/icons8-eye-50.png')}
-            style={styles.inputIcon}
-          />
-        </View>
+              
 
         {/* Login Button */}
         <TouchableOpacity 
